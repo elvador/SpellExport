@@ -1,4 +1,4 @@
-## Interface: 70100
+## Interface: 90001
 ## Title: SpellExport
 ## Notes: Exporting spell data to saved variables as csv
 ## Author: Elvador
