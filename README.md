@@ -1,6 +1,6 @@
 # SpellExport
 
-This is a simple addon to export the wow spell tooltips for [wow-spell-tooltips](https://github.com/elvador/wow-spell-tooltips).
+This is a simple addon to export the wow spell tooltips for [wow-spell-tooltips-code](https://github.com/elvador/wow-spell-tooltips-code).
 
 Here is how you use it:
 
