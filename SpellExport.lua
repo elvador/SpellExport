@@ -66,7 +66,7 @@ local function saveSpellData(id, isRetry)
 end
 
 local function retrySpellIds()
-	if GetTime()-lastSpellUpdate < 0.5 then
+	if GetTime()-lastSpellUpdate < 0.2 then
 		p("Still receiving spell name updates, please wait before retrying.")
 		return
 	end
@@ -80,9 +80,9 @@ local function retrySpellIds()
 	end
 
 	p(count >= 1000 and ("Retried 1000/%d spells"):format(count) or ("Retried %d spells"):format(count))
-	
+
 	if count > 0 then
-		CTimerAfter(1, retrySpellIds)
+		CTimerAfter(0.5, retrySpellIds)
 	else
 		PlaySound(73280, "MASTER") -- UI_ORDERHALL_TALENT_READY_TOAST
 	end
@@ -91,7 +91,7 @@ end
 local requestSpellIds
 
 local function checkForLastSpellUpdate()
-	if GetTime()-lastSpellUpdate > 1 then
+	if GetTime()-lastSpellUpdate > 0.15 then
 		p("|cff00ff00Requesting new spells")
 		requestSpellIds()
 	end
@@ -106,7 +106,7 @@ function requestSpellIds()
 			failedCount = failedCount + 1
 			if failedCount > 1000 then
 				if not updateTicker then
-					updateTicker = NewTicker(0.5, checkForLastSpellUpdate)
+					updateTicker = NewTicker(0.2, checkForLastSpellUpdate)
 				end
 				lastId = i
 				p(("|cffffff00Stopped requesting after %d fails at spell id %d"):format(1000, lastId))
